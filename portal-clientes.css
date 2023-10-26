@@ -1,0 +1,315 @@
+.ast-container {
+    display: table !important;
+}
+
+.main-header-bar {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: 0;
+}
+
+.ast-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0px;
+}
+
+.main-header-bar a {
+    color: #fff;
+}
+
+
+.main-header-bar ul.sub.menu {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+#portal-clientes {
+    padding-top: 300px;
+}
+
+#portal-clientes .cabecera {
+    background: url("https://www.doctormopar.com/wp-content/uploads/2019/02/5.jpg") no-repeat center center;
+    height: 300px;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 350px;
+}
+
+#portal-clientes h3.page-title {
+    text-align: center;
+    position: relative;
+    width: 400px;
+    margin: 0 auto 80px;
+    color: #000;
+}
+
+#portal-clientes h3.page-title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    margin: 0 auto 60px;
+    height: 4px;
+    width: 90px;
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    background-color: #dd3b35;
+    margin-left: -45px;
+}
+
+#portal-clientes .contact_form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+#portal-clientes .contact_form input {
+    width: 100%;
+    margin: 5px 0;
+}
+
+#portal-clientes .contact_form button {
+    margin: 10px auto;
+    display: block;
+}
+
+#portal-clientes section.the_content {
+    margin: 100px auto;
+    overflow: hidden;
+    display: flex;
+    height: 400px;
+}
+
+#portal-clientes section.the_content .col-left {
+    width: 60%;
+    float: left;
+    background-color: #ededef;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+}
+
+#portal-clientes section.the_content .col-right {
+    width: 40%;
+    float: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#portal-clientes aside.sidebar {
+    width: 360px;
+    float: left;
+    background: #ededef;
+    border-radius: 10px;
+    padding: 50px;
+    margin-left: 5%;
+}
+
+#portal-clientes .column2 {
+    width: 65%;
+    float: left;
+    padding: 0 0 50px 50px;
+}
+
+#portal-clientes .btn-salir {
+    color: #ffffff;
+    border-color: #1abc9c;
+    float: right;
+}
+
+#portal-clientes .btn-perfil {
+    background-color: #1abc9c;
+    float: left;
+}
+
+#portal-clientes .autos-list .item {
+    display: inline-block;
+    background: #dd3333;
+    border-radius: 20px;
+    border: 5px solid #dd3333;
+    color: #fff;
+    width: 48%;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    margin: 0 5px;
+}
+
+#portal-clientes .autos-list .item:hover {
+    border-color: #b22626;
+}
+
+#portal-clientes .autos-list .item img {
+    height: 150px;
+    width: auto;
+    float: left;
+    margin: 0px 20px;
+    object-fit: cover;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+#portal-clientes .autos-list .item:hover img {
+    transform: scale(1.1);
+}
+
+#portal-clientes .autos-list .item span {
+    display: table-cell;
+    height: 150px;
+    vertical-align: middle;
+    width: 240px;
+    font-weight: bold;
+}
+
+#portal-clientes .history_items {
+    margin-bottom: 20px;
+}
+
+#portal-clientes .history_items .fecha {
+    border: 4px solid #5bbd9d;
+    width: 70px;
+    border-radius: 105px;
+    text-align: center;
+    position: relative;
+    float: left;
+    background: #f8f8f8;
+    height: 70px;
+    line-height: 18px;
+    padding-top: 14px;
+    box-shadow: 1px 1px 10px -2px;
+}
+
+#portal-clientes .history_items .fecha:after {
+    content: '';
+    width: 13px;
+    height: 13px;
+    background: #fff;
+    position: absolute;
+    top: 42%;
+    right: -9px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-right: 4px solid #5bbd9d;
+    border-top: 4px solid #5bbd9d;
+    background: #f8f8f8;
+}
+
+#portal-clientes .history_items .contenido {
+    float: left;
+    width: 90%;
+    margin-left: 2%;
+    background: #ededef;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #5bbd9d;
+    box-shadow: 0px 0px 30px -14px;
+}
+
+#portal-clientes #profile-form .col1 {
+    width: 47%;
+    float: left;
+}
+
+#portal-clientes #profile-form .col2 {
+    width: 47%;
+    float: left;
+    margin-left: 3%;
+}
+
+#portal-clientes #profile-form lable {
+    display: block;
+}
+
+#portal-clientes #profile-form input {
+    display: block;
+    width: 100%;
+}
+
+#portal-clientes #profile-form .column_inner {
+    margin-bottom: 20px;
+}
+
+
+
+@media(max-width: 1200px) {
+    #portal-clientes aside.sidebar {
+        width: 30%;
+    }
+}
+
+
+
+@media(max-width: 900px) {
+    #portal-clientes section.the_content {
+        display: block;
+        height: auto;
+    }
+
+    #portal-clientes section.the_content .col-left {
+        width: 100%;
+        height: auto;
+        display: block;
+        float: none;
+    }
+
+    #portal-clientes section.the_content .col-right {
+        width: 100%;
+        height: 300px;
+        display: block;
+        float: none;
+    }
+
+    #portal-clientes section.the_content .col-right img {
+        width: 100%;
+    }
+
+    #portal-clientes aside.sidebar {
+        width: 90%;
+    }
+
+    #portal-clientes .column2 {
+        width: 96%;
+        margin-top: 30px;
+    }
+
+    #portal-clientes .history_items .fecha:after {
+        top: 92%;
+        right: 23px;
+        -webkit-transform: rotate(132deg);
+        -moz-transform: rotate(132deg);
+        transform: rotate(132deg);
+    }
+}
+
+
+
+@media(max-width: 768px) {
+    #portal-clientes .autos-list .item {
+        width: 98%;
+    }
+
+    #portal-clientes .autos-list {
+        margin-top: 30px;
+    }
+
+    #portal-clientes .history_items {
+        margin-bottom: 60px
+    }
+
+    #portal-clientes .history_items .fecha {
+        margin-bottom: 10px;
+    }
+
+    #portal-clientes .history_items .contenido {
+        width: 98%;
+        margin-left: 0%;
+    }
+
+}
