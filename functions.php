@@ -29,7 +29,7 @@ class MoparTheme
     {
         if (!self::is_logged_in()) self::login_page();
         else if (isset($_GET['pdf'])) self::pdf_page();
-        else if (isset($_GET['vid'])) self::vehicle_page();
+        else if (isset($_GET['vid'])) self::history_page();
         else if (isset($_GET['section'])) switch ($_GET['section']) {
             case 'profile':
                 self::profile_page();
@@ -59,9 +59,12 @@ class MoparTheme
         require get_theme_file_path('/portal-clientes/main.php');
     }
 
-    static function vehicle_page()
+    static function history_page()
     {
-        require get_theme_file_path('/portal-clientes/vehicle-page.php');
+        self::load_sidebar();
+        global $wpdb;
+        $historial = $wpdb->get_results('SELECT * FROM ot WHERE vehiculo_id = ' . $_GET['vid'] . ' AND estado != 3 AND cliente_id = ' . $_SESSION['mopar_portal_clientes_uid'] . ' ORDER BY regdate DESC ');
+        require get_theme_file_path('/portal-clientes/history-page.php');
     }
 
     static function profile_page()
