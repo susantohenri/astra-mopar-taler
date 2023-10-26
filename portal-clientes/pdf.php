@@ -1,15 +1,5 @@
 <?php
 
-$ot = Mopar::getOneOt($_GET['id']);
-$cliente = Mopar::getOneCliente($ot->cliente_id);
-$vehiculo = Mopar::getOneVehiculo($ot->vehiculo_id);
-
-if ($ot->estado == 1)
-    $titulo_ot = 'Cotización';
-else
-    $titulo_ot = 'Orden de Trabajo';
-
-
 $html = '
     <!--
     <style>
@@ -92,9 +82,7 @@ $html = '
             <td style="width: 110px; text-align: center;"> <strong>Valor</strong> </td>
         </tr>';
 
-$detalles = json_decode($ot->detalle);
 foreach ($detalles->item as $key => $value) {
-
     $html .= '
             <tr>
                 <td style="text-align: left">' . $detalles->item[$key] . '</td>

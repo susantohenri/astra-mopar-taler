@@ -34,6 +34,9 @@ class MoparTheme
             case 'profile':
                 self::profile_page();
                 break;
+            case 'horas-agendadas':
+                self::agenda_page();
+                break;
         }
         else self::main_page();
     }
@@ -67,6 +70,24 @@ class MoparTheme
         require get_theme_file_path('/portal-clientes/history-page.php');
     }
 
+    static function agenda_page()
+    {
+        self::load_sidebar();
+        global $wpdb;
+        $agendas = $wpdb->get_results($wpdb->prepare("
+            SELECT
+                solicitud.id
+                , solicitud.fecha
+                , solicitud.hora
+                , solicitud.solicitud
+            FROM solicitud
+            WHERE cliente_id = %d
+            AND fecha IS NOT NULL
+            ORDER BY fecha, hora ASC
+        ", $_SESSION['mopar_portal_clientes_uid']));
+        require get_theme_file_path('/portal-clientes/agenda-page.php');
+    }
+
     static function profile_page()
     {
         self::load_sidebar();
@@ -76,6 +97,15 @@ class MoparTheme
 
     static function pdf_page()
     {
+        $ot = Mopar::getOneOt($_GET['id']);
+        $cliente = Mopar::getOneCliente($ot->cliente_id);
+        $vehiculo = Mopar::getOneVehiculo($ot->vehiculo_id);
+        $detalles = json_decode($ot->detalle);
+
+        if ($ot->estado == 1)
+            $titulo_ot = 'Cotización';
+        else
+            $titulo_ot = 'Orden de Trabajo';
 
         require get_theme_file_path('/portal-clientes/pdf.php');
     }
