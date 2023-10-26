@@ -8,12 +8,12 @@ wp_enqueue_style('portal-clientes');
 
 while (have_posts()) :
     the_post();
-    ?>
+?>
     <div id="portal-clientes">
         <div class="cabecera"></div>
         <h3 class="page-title">Portal de Clientes</h3>
-    <?php
-    MoparTheme::load_page();
-    ?></div><?php
+        <?php MoparTheme::load_page(); ?>
+    </div>
+<?php
 endwhile;
 get_footer();

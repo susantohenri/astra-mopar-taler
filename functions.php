@@ -12,14 +12,14 @@ class MoparTheme
         @session_start();
         if (isset($_POST['post_action'])) switch ($_POST['post_action']) {
             case 'login':
-                $this->login_process();
-                break;
-            case 'logout':
-                $this->logout_process();
+                self::login_process();
                 break;
             case 'profile':
-                $this->update_profile_process();
+                self::update_profile_process();
                 break;
+        }
+        if (isset($_GET['section'])) {
+            if ('logout' === $_GET['section']) self::logout_process();
         }
     }
 
@@ -28,7 +28,11 @@ class MoparTheme
         if (!self::is_logged_in()) self::login_page();
         else if (isset($_GET['pdf'])) self::pdf_page();
         else if (isset($_GET['vid'])) self::vehicle_page();
-        else if (isset($_GET['page'])) self::profile_page();
+        else if (isset($_GET['section'])) switch ($_GET['section']) {
+            case 'profile':
+                self::profile_page();
+                break;
+        }
         else self::main_page();
     }
 
@@ -37,7 +41,7 @@ class MoparTheme
         require get_theme_file_path('/portal-clientes/login-page.php');
     }
 
-    static function load_sidebar(&$mis_autos)
+    static function load_sidebar(&$mis_autos = null)
     {
         $this_cliente = Mopar::getOneCliente($_SESSION['mopar_portal_clientes_uid']);
         $mis_autos = Mopar::getVehiculosByCliente($this_cliente->id);
@@ -58,11 +62,13 @@ class MoparTheme
 
     static function profile_page()
     {
+        self::load_sidebar();
         require get_theme_file_path('/portal-clientes/profile-page.php');
     }
 
     static function pdf_page()
     {
+
         require get_theme_file_path('/portal-clientes/pdf.php');
     }
 

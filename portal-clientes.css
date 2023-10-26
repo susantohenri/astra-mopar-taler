@@ -236,7 +236,9 @@
     margin-bottom: 20px;
 }
 
-
+button a, button a:hover {
+    color: white;
+}
 
 @media(max-width: 1200px) {
     #portal-clientes aside.sidebar {

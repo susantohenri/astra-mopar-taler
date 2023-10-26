@@ -9,11 +9,7 @@
             <?php } ?>
         </ul>
         <br>
-        <form action="" method="post">
-            <!-- <button type="button" class="btn-perfil" onclick="event.preventDefault();location.href='<?php echo get_bloginfo('wpurl') ?>/clientes/?page=profile'">Mi Perfil</button> -->
-            <button class="btn-perfil" onclick="event.preventDefault(); location.href='<?php echo get_bloginfo('wpurl') ?>/clientes/?page=profile'">Mi Perfil</button>
-            <input type="hidden" name="post_action" value="logout">
-            <button type="submit" class="btn-salir">Salir</button>
-        </form>
+        <button type="button" class="btn-perfil"><a href="?section=profile">Mi Perfil</a></button>
+        <button type="button" class="btn-salir"><a href="?section=logout">Salir</a></button>
     </div>
 </aside>
