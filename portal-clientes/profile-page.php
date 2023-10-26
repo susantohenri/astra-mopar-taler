@@ -7,8 +7,22 @@
             <div class="two_columns_50_50 clearfix">
                 <div class="col1">
                     <div class="column_inner">
-                        <label for="email">Email</label>
-                        <input type="text" class="requiredField" name="email" id="email" value="<?php echo $this_cliente->email ?>" required />
+                        <label for="nombres">Nombre</label>
+                        <input type="text" class="requiredField" name="nombres" id="nombres" value="<?php echo $this_cliente->nombres ?>" required />
+                    </div>
+                </div>
+                <div class="col2">
+                    <div class="column_inner">
+                        <label for="apellidoPaterno">Apellido Paterno</label>
+                        <input type="text" name="apellidoPaterno" id="apellidoPaterno" value="<?php echo $this_cliente->apellidoPaterno ?>" />
+                    </div>
+                </div>
+            </div>
+            <div class="two_columns_50_50 clearfix">
+                <div class="col1">
+                    <div class="column_inner">
+                        <label for="apellidoMaterno">Apellido Materno</label>
+                        <input type="text" name="apellidoMaterno" id="apellidoMaterno" value="<?php echo $this_cliente->apellidoMaterno ?>" />
                     </div>
                 </div>
                 <div class="col2">

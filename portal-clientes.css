@@ -116,15 +116,19 @@
     padding: 0 0 50px 50px;
 }
 
+#portal-clientes button {
+    margin-top: 5px;
+}
+
 #portal-clientes .btn-salir {
     color: #ffffff;
     border-color: #1abc9c;
-    float: right;
+    /* float: right; */
 }
 
 #portal-clientes .btn-perfil {
     background-color: #1abc9c;
-    float: left;
+    /* float: left; */
 }
 
 #portal-clientes .autos-list .item {
@@ -234,10 +238,6 @@
 
 #portal-clientes #profile-form .column_inner {
     margin-bottom: 20px;
-}
-
-button a, button a:hover {
-    color: white;
 }
 
 @media(max-width: 1200px) {

@@ -6,6 +6,8 @@ add_action('wp_enqueue_scripts', function () {
 
 class MoparTheme
 {
+    public static $this_cliente;
+    public static $mis_autos;
 
     function __construct()
     {
@@ -41,17 +43,19 @@ class MoparTheme
         require get_theme_file_path('/portal-clientes/login-page.php');
     }
 
-    static function load_sidebar(&$mis_autos = null)
+    static function load_sidebar()
     {
-        $this_cliente = Mopar::getOneCliente($_SESSION['mopar_portal_clientes_uid']);
-        $mis_autos = Mopar::getVehiculosByCliente($this_cliente->id);
+        self::$this_cliente = Mopar::getOneCliente($_SESSION['mopar_portal_clientes_uid']);
+        $this_cliente = self::$this_cliente;
+        self::$mis_autos = Mopar::getVehiculosByCliente($this_cliente->id);
+        $mis_autos = self::$mis_autos;
         require get_theme_file_path('/portal-clientes/sidebar.php');
     }
 
     static function main_page()
     {
-        $mis_autos = [];
-        self::load_sidebar($mis_autos);
+        self::load_sidebar();
+        $mis_autos = self::$mis_autos;
         require get_theme_file_path('/portal-clientes/main.php');
     }
 
@@ -63,6 +67,7 @@ class MoparTheme
     static function profile_page()
     {
         self::load_sidebar();
+        $this_cliente = self::$this_cliente;
         require get_theme_file_path('/portal-clientes/profile-page.php');
     }
 
@@ -107,7 +112,9 @@ class MoparTheme
     public static function update_profile_process()
     {
         $array_edit = [
-            'email' => $_POST['email'],
+            'nombres' => $_POST['nombres'],
+            'apellidoPaterno' => $_POST['apellidoPaterno'],
+            'apellidoMaterno' => $_POST['apellidoMaterno'],
             'telefono' => $_POST['telefono']
         ];
 

@@ -9,7 +9,10 @@
             <?php } ?>
         </ul>
         <br>
-        <button type="button" class="btn-perfil"><a href="?section=profile">Mi Perfil</a></button>
-        <button type="button" class="btn-salir"><a href="?section=logout">Salir</a></button>
+        <div>
+            <a href="<?= site_url('clientes') ?>"><button type="button" class="btn-perfil">Home</button></a>
+            <a href="?section=profile"><button type="button" class="btn-perfil">Mi Perfil</button></a>
+            <a href="?section=logout"><button type="button" class="btn-salir">Salir</button></a>
+        </div>
     </div>
 </aside>
