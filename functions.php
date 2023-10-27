@@ -37,6 +37,9 @@ class MoparTheme
             case 'horas-agendadas':
                 self::agenda_page();
                 break;
+            case 'cotizaciones':
+                self::cotizaciones_page();
+                break;
         }
         else self::main_page();
     }
@@ -86,6 +89,24 @@ class MoparTheme
             ORDER BY fecha, hora ASC
         ", $_SESSION['mopar_portal_clientes_uid']));
         require get_theme_file_path('/portal-clientes/agenda-page.php');
+    }
+
+    static function cotizaciones_page()
+    {
+        self::load_sidebar();
+        global $wpdb;
+        $cotizaciones = $wpdb->get_results($wpdb->prepare("
+            SELECT
+                ot.id
+                , ot.regdate
+                , ot.titulo
+                , ot.observaciones
+                , ot.estado
+            FROM ot
+            WHERE cliente_id = %d
+            AND ot.estado IN (3,4)
+        ", $_SESSION['mopar_portal_clientes_uid']));
+        require get_theme_file_path('/portal-clientes/cotizacione-page.php');
     }
 
     static function profile_page()
