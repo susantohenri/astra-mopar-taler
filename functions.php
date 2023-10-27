@@ -27,8 +27,14 @@ class MoparTheme
 
     public static function load_page()
     {
-        if (!self::is_logged_in()) self::login_page();
-        else if (isset($_GET['pdf'])) self::pdf_page();
+        if (!self::is_logged_in()) {
+            if (isset($_GET['section'])) switch ($_GET['section']) {
+                case 'forgot-password':
+                    self::forgot_password_page();
+                    break;
+            }
+            else self::login_page();
+        } else if (isset($_GET['pdf'])) self::pdf_page();
         else if (isset($_GET['vid'])) self::history_page();
         else if (isset($_GET['section'])) switch ($_GET['section']) {
             case 'profile':
@@ -45,6 +51,23 @@ class MoparTheme
                 break;
         }
         else self::main_page();
+    }
+
+    static function forgot_password_page()
+    {
+        $message = '';
+        if (isset($_POST['user_email'])) {
+            global $wpdb;
+            $client = $wpdb->get_row($wpdb->prepare("SELECT id, email FROM clientes WHERE email = %s", $_POST['user_email']));
+            if (!$client) $message = 'Email not registered';
+            else {
+                $new_password = rand(11111111, 99999999);
+                $wpdb->update('clientes', ['secret' => md5($new_password)], ['id' => $client->id]);
+                Mopar::sendMail(['recipient' => $client->email, 'new_password' => $new_password], 'forgot_password');
+                $message = 'New Password Sent, please check your email';
+            }
+        }
+        require get_theme_file_path('/portal-clientes/forgot-password-page.php');
     }
 
     static function login_page()
