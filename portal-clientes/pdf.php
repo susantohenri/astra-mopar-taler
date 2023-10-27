@@ -75,7 +75,7 @@ $html = '
         </tr>
     </table>
     <br>
-    <h2>Orden de trabajo 111</h2>
+    <br>
     <table style="width: 590px;" border="1">
         <tr>
             <td style="width: 480px; text-align: center;"> <strong>Descripción</strong> </td>

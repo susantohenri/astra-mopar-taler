@@ -166,6 +166,7 @@ class MoparTheme
         $cliente = Mopar::getOneCliente($ot->cliente_id);
         $vehiculo = Mopar::getOneVehiculo($ot->vehiculo_id);
         $detalles = json_decode($ot->detalle);
+	    $solicitud = Mopar::getOneSolicitudByOtId($_GET['id']);
 
         if ($ot->estado == 1)
             $titulo_ot = 'Cotización';
