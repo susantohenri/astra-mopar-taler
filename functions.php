@@ -12,6 +12,7 @@ class MoparTheme
     function __construct()
     {
         @session_start();
+        if (self::is_logged_in() && isset($_GET['pdf'])) self::pdf_page();
         if (isset($_POST['post_action'])) switch ($_POST['post_action']) {
             case 'login':
                 self::login_process();
@@ -34,8 +35,7 @@ class MoparTheme
                     break;
             }
             else self::login_page();
-        } else if (isset($_GET['pdf'])) self::pdf_page();
-        else if (isset($_GET['vid'])) self::history_page();
+        } else if (isset($_GET['vid'])) self::history_page();
         else if (isset($_GET['section'])) switch ($_GET['section']) {
             case 'profile':
                 self::profile_page();
@@ -59,7 +59,7 @@ class MoparTheme
         if (isset($_POST['user_email'])) {
             global $wpdb;
             $client = $wpdb->get_row($wpdb->prepare("SELECT id, email FROM clientes WHERE email = %s", $_POST['user_email']));
-            if (!$client) $message = 'Email not registered';
+            if (!$client) $message = 'ERROR: Email not registered';
             else {
                 $new_password = rand(11111111, 99999999);
                 $wpdb->update('clientes', ['secret' => md5($new_password)], ['id' => $client->id]);
