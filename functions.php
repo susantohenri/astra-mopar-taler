@@ -40,6 +40,9 @@ class MoparTheme
             case 'cotizaciones':
                 self::cotizaciones_page();
                 break;
+            case 'trabajos-realizados':
+                self::trabajos_page();
+                break;
         }
         else self::main_page();
     }
@@ -107,6 +110,24 @@ class MoparTheme
             AND ot.estado IN (3,4)
         ", $_SESSION['mopar_portal_clientes_uid']));
         require get_theme_file_path('/portal-clientes/cotizacione-page.php');
+    }
+
+    static function trabajos_page()
+    {
+        self::load_sidebar();
+        global $wpdb;
+        $trabajos = $wpdb->get_results($wpdb->prepare("
+            SELECT
+                ot.id
+                , ot.regdate
+                , ot.titulo
+                , ot.observaciones
+                , ot.estado
+            FROM ot
+            WHERE cliente_id = %d
+            AND ot.estado IN (2)
+        ", $_SESSION['mopar_portal_clientes_uid']));
+        require get_theme_file_path('/portal-clientes/trabajos-realizados-page.php');
     }
 
     static function profile_page()

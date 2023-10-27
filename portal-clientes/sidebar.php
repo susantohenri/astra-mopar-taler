@@ -14,6 +14,7 @@
             <a href="?section=profile"><button type="button" class="btn-perfil">Mi Perfil</button></a>
             <a href="?section=horas-agendadas"><button type="button" class="btn-perfil">Horas Agendadas</button></a>
             <a href="?section=cotizaciones"><button type="button" class="btn-perfil">Cotizaciones</button></a>
+            <a href="?section=trabajos-realizados"><button type="button" class="btn-perfil">Trabajos Realizados</button></a>
             <a href="?section=logout"><button type="button" class="btn-salir">Salir</button></a>
         </div>
     </div>
