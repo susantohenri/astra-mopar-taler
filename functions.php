@@ -37,8 +37,7 @@ class MoparTheme
                     break;
             }
             else self::login_page();
-        } else if (isset($_GET['vid'])) self::history_page();
-        else if (isset($_GET['section'])) switch ($_GET['section']) {
+        } else if (isset($_GET['vid'])) switch ($_GET['section']) {
             case 'profile':
                 self::profile_page();
                 break;
@@ -50,6 +49,14 @@ class MoparTheme
                 break;
             case 'trabajos-realizados':
                 self::trabajos_page();
+                break;
+            default:
+                self::history_page();
+                break;
+        }
+        else if (isset($_GET['section'])) switch ($_GET['section']) {
+            case 'profile':
+                self::profile_page();
                 break;
         }
         else self::main_page();
@@ -170,7 +177,7 @@ class MoparTheme
         $cliente = Mopar::getOneCliente($ot->cliente_id);
         $vehiculo = Mopar::getOneVehiculo($ot->vehiculo_id);
         $detalles = json_decode($ot->detalle);
-	    $solicitud = Mopar::getOneSolicitudByOtId($_GET['id']);
+        $solicitud = Mopar::getOneSolicitudByOtId($_GET['id']);
 
         if ($ot->estado == 1)
             $titulo_ot = 'Cotización';
