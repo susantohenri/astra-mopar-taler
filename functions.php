@@ -8,10 +8,12 @@ class MoparTheme
 {
     public static $this_cliente;
     public static $mis_autos;
+    public static $message;
 
     function __construct()
     {
         @session_start();
+        self::$message = '';
         if (self::is_logged_in() && isset($_GET['pdf'])) self::pdf_page();
         if (isset($_POST['post_action'])) switch ($_POST['post_action']) {
             case 'login':
@@ -157,6 +159,7 @@ class MoparTheme
     {
         self::load_sidebar();
         $this_cliente = self::$this_cliente;
+        $message = self::$message;
         require get_theme_file_path('/portal-clientes/profile-page.php');
     }
 
@@ -223,9 +226,8 @@ class MoparTheme
         }
 
         global $wpdb;
-        $wpdb->update('clientes', $array_edit, ['id' => $_SESSION['mopar_portal_clientes_uid']]);
-
-        header('Location: ' . get_bloginfo('wpurl') . '/clientes/?page=profile&stat=1');
-        exit();
+        if ($wpdb->update('clientes', $array_edit, ['id' => $_SESSION['mopar_portal_clientes_uid']])) {
+            self::$message = '<p>Profile updated successfully!</p>';
+        } else self::$message = '<p>Profile not updated!</p>';
     }
 }

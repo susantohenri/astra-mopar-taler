@@ -1,5 +1,6 @@
 <div class="column2">
     <h2 style="text-align: left;"><?php echo $_SESSION['mopar_portal_clientes_nombre'] ?></h2>
+    <?= $message ?>
     <br>
     <div id="profile-form">
         <form method="post" action="">
