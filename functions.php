@@ -139,8 +139,13 @@ class MoparTheme
                 , ot.observaciones
                 , ot.estado
             FROM ot
-            WHERE cliente_id = %d AND vehiculo_id = %d
-            AND ot.estado IN (3,4)
+            LEFT JOIN solicitud ON ot.id = solicitud.ot_id
+            WHERE ot.cliente_id = %d AND ot.vehiculo_id = %d
+            AND (
+                ot.estado = 1
+                OR
+                solicitud.estado = 4
+            )
             ", $_SESSION['mopar_portal_clientes_uid'], $_GET['vid']));
         require get_theme_file_path('/portal-clientes/cotizacione-page.php');
     }
