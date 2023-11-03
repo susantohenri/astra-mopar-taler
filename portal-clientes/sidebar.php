@@ -12,9 +12,13 @@
         <div>
             <a href="<?= site_url('clientes') ?>"><button type="button" class="btn-perfil">Home</button></a>
             <a href="?section=profile"><button type="button" class="btn-perfil">Mi Perfil</button></a>
-            <a href="?section=horas-agendadas"><button type="button" class="btn-perfil">Horas Agendadas</button></a>
-            <a href="?section=cotizaciones"><button type="button" class="btn-perfil">Cotizaciones</button></a>
-            <a href="?section=trabajos-realizados"><button type="button" class="btn-perfil">Trabajos Realizados</button></a>
+
+            <?php if (!is_null($vid)): ?>
+            <a href="?section=horas-agendadas&vid=<?= $vid ?>"><button type="button" class="btn-perfil">Horas Agendadas</button></a>
+            <a href="?section=cotizaciones&vid=<?= $vid ?>"><button type="button" class="btn-perfil">Cotizaciones</button></a>
+            <a href="?section=trabajos-realizados&vid=<?= $vid ?>"><button type="button" class="btn-perfil">Trabajos Realizados</button></a>
+            <?php endif ?>
+
             <a href="?section=logout"><button type="button" class="btn-salir">Salir</button></a>
         </div>
     </div>

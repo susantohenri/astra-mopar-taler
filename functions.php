@@ -79,6 +79,7 @@ class MoparTheme
 
     static function load_sidebar()
     {
+        $vid = isset($_GET['vid']) ? $_GET['vid'] : null;
         self::$this_cliente = Mopar::getOneCliente($_SESSION['mopar_portal_clientes_uid']);
         $this_cliente = self::$this_cliente;
         self::$mis_autos = Mopar::getVehiculosByCliente($this_cliente->id);
@@ -112,10 +113,10 @@ class MoparTheme
                 , solicitud.hora
                 , solicitud.solicitud
             FROM solicitud
-            WHERE cliente_id = %d
+            WHERE cliente_id = %d AND vehiculo_id = %d
             AND fecha IS NOT NULL
             ORDER BY fecha, hora ASC
-        ", $_SESSION['mopar_portal_clientes_uid']));
+        ", $_SESSION['mopar_portal_clientes_uid'], $_GET['vid']));
         require get_theme_file_path('/portal-clientes/agenda-page.php');
     }
 
@@ -131,9 +132,9 @@ class MoparTheme
                 , ot.observaciones
                 , ot.estado
             FROM ot
-            WHERE cliente_id = %d
+            WHERE cliente_id = %d AND vehiculo_id = %d
             AND ot.estado IN (3,4)
-        ", $_SESSION['mopar_portal_clientes_uid']));
+            ", $_SESSION['mopar_portal_clientes_uid'], $_GET['vid']));
         require get_theme_file_path('/portal-clientes/cotizacione-page.php');
     }
 
@@ -149,9 +150,9 @@ class MoparTheme
                 , ot.observaciones
                 , ot.estado
             FROM ot
-            WHERE cliente_id = %d
+            WHERE cliente_id = %d AND vehiculo_id = %d
             AND ot.estado IN (2)
-        ", $_SESSION['mopar_portal_clientes_uid']));
+            ", $_SESSION['mopar_portal_clientes_uid'], $_GET['vid']));
         require get_theme_file_path('/portal-clientes/trabajos-realizados-page.php');
     }
 
