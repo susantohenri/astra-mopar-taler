@@ -11,8 +11,9 @@ while (have_posts()) :
 ?>
     <div id="portal-clientes">
         <div class="cabecera"></div>
+		<br><br><br>
         <h3 class="page-title">Portal de Clientes</h3>
-        <?php MoparTheme::load_page(); ?>
+	    <?php MoparTheme::load_page(); ?>
     </div>
 <?php
 endwhile;
